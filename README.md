@@ -63,3 +63,7 @@
   - [8-1. Linux UI Stack / 圖形介面堆疊](./content/ch08.md#8-1-linux-ui-stack--圖形介面堆疊)
   - [8-2. 常用應用程式](./content/ch08.md#8-2-常用應用程式)
   - [8-3. 總結](./content/ch08.md#8-3-總結)
+- [appendix]
+  - [Gaussian 16](/appendix/g16.md)
+  - [Gromacs 2025](/appendix/gmx2025.md)
+  - [VASP 6](/appendix/vasp6.md)
