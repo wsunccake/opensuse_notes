@@ -10,7 +10,7 @@
 
   ```bash
   # 以 root 權限安裝基礎開發工具
-  server:~ # zypper in -t pattern devel_basis
+  tux@suse16:~ > sudo zypper in -t pattern devel_basis
   ```
 
 ## 2. 編譯 VASP 6.4.2
@@ -23,7 +23,7 @@ VASP 的效能高度依賴於數學函式庫 (如 BLAS, LAPACK, ScaLAPACK) 和�
 
   ```bash
   # 設定 Intel oneAPI 環境變數
-  server:~ > source /opt/intel/oneapi/setvars.sh
+  tux@suse16:~ > source /opt/intel/oneapi/setvars.sh
   ```
 
 ### 2.2. 解壓縮與設定 Makefile
@@ -32,11 +32,11 @@ VASP 的效能高度依賴於數學函式庫 (如 BLAS, LAPACK, ScaLAPACK) 和�
 
 ```bash
 # 解壓縮原始碼
-server:~ > tar zxf vasp.6.4.2.tgz
-server:~ > cd vasp.6.4.2
+tux@suse16:~ > tar zxf vasp.6.4.2.tgz
+tux@suse16:~ > cd vasp.6.4.2
 
 # 複製 Intel 編譯器設定檔範本
-server:~/vasp.6.4.2 > cp arch/makefile.include.intel makefile.include
+tux@suse16:~/vasp.6.4.2 > cp arch/makefile.include.intel makefile.include
 ```
 
 接下來，修改 `makefile.include` 和 `parse/makefile`，將預設的舊版 Intel 編譯器 (`ifort`, `icc`) 更換為新一代的 LLVM-based 編譯器 (`ifx`, `icx`)，以獲得更好的效能與相容性。
@@ -94,10 +94,10 @@ server:~/vasp.6.4.2 > cp arch/makefile.include.intel makefile.include
 
 ```bash
 # 編譯標準版 VASP
-server:~/vasp.6.4.2 > make std
+tux@suse16:~/vasp.6.4.2 > make std
 
 # 編譯完成後，可以在 bin 目錄下找到執行檔
-server:~/vasp.6.4.2 > ls bin
+tux@suse16:~/vasp.6.4.2 > ls bin
 vasp_std  vasp_gam  vasp_ncl
 ```
 
@@ -113,14 +113,14 @@ VASPsol 是一個隱式溶劑模型模組，用於模擬材料在液體環境中
 
 ```bash
 # 下載 VASPsol
-server:~ $ git clone https://github.com/henniggroup/VASPsol.git
+tux@suse16:~ $ git clone https://github.com/henniggroup/VASPsol.git
 
 # 進入 VASP 原始碼目錄
-server:~/vasp.6.4.2 >
+tux@suse16:~/vasp.6.4.2 >
 # 複製 VASPsol 的主要原始碼檔案
-server:~/vasp.6.4.2 > cp ~/VASPsol/src/solvation.F .
+tux@suse16:~/vasp.6.4.2 > cp ~/VASPsol/src/solvation.F .
 # 應用 patch，使 VASPsol 與 VASP 6.1.0+ 版本相容
-server:~/vasp.6.4.2 > patch -Np0 < ~/VASPsol/patches/pbz_patch_610
+tux@suse16:~/vasp.6.4.2 > patch -Np0 < ~/VASPsol/patches/pbz_patch_610
 ```
 
 ### 3.2. 重新編譯
@@ -129,7 +129,7 @@ server:~/vasp.6.4.2 > patch -Np0 < ~/VASPsol/patches/pbz_patch_610
 
 ```bash
 # 重新編譯標準版
-server:~/vasp.6.4.2 > make std
+tux@suse16:~/vasp.6.4.2 > make std
 ```
 
 ---
@@ -144,9 +144,9 @@ VTST (Vibrational Transition State Theory) Tools 是一套用於尋找過渡態�
 
 ```bash
 # 下載並解壓縮 VTST
-server:~ > tar zxf vtstcode-213.tgz
+tux@suse16:~ > tar zxf vtstcode-213.tgz
 # 將 VTST 原始碼複製到 VASP 的 src 目錄
-server:~ > cp -r ~/vtstcode-213/vtstcode6.4.0/* ~/vasp.6.4.2/src/.
+tux@suse16:~ > cp -r ~/vtstcode-213/vtstcode6.4.0/* ~/vasp.6.4.2/src/.
 ```
 
 ### 4.2. 修改原始碼與 Makefile
@@ -213,7 +213,7 @@ server:~ > cp -r ~/vtstcode-213/vtstcode6.4.0/* ~/vasp.6.4.2/src/.
 
 ```bash
 # 重新編譯以包含 VTST
-server:~/vasp.6.4.2 > make std
+tux@suse16:~/vasp.6.4.2 > make std
 ```
 
 ### 練習

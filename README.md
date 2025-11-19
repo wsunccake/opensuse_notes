@@ -63,7 +63,10 @@
   - [8-1. Linux UI Stack / 圖形介面堆疊](./content/ch08.md#8-1-linux-ui-stack--圖形介面堆疊)
   - [8-2. 常用應用程式](./content/ch08.md#8-2-常用應用程式)
   - [8-3. 總結](./content/ch08.md#8-3-總結)
-- [appendix]
+- appendix
+  - [Abinit 10](/appendix/abinit10.md)
   - [Gaussian 16](/appendix/g16.md)
   - [Gromacs 2025](/appendix/gmx2025.md)
+  - [NetCDF 4](/appendix/netcdf4.md)
+  - [OpenMPI 5](/appendix/openmpi5.md)
   - [VASP 6](/appendix/vasp6.md)
