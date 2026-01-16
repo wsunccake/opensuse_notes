@@ -134,11 +134,35 @@ tux@suse16:~/vasp.6.4.2 > make std
 
 ---
 
-## 4. 整合 VTST 模組
+## 4. 整合 CP-VASP 模組
+
+CP-VASP 是 德州大學奧斯汀分校的 Yuanyue Liu 教授研究團隊開發，核心功能是讓 VASP 能夠進行 恆定電極電勢（Constant Electrode Potential） 的密度泛函理論（DFT）計算。
+
+### 4.1. 下載與修補
+
+寫信跟作者要 patch
+
+```bash
+# 進入 VASP 原始碼目錄
+tux@suse16:~/vasp.6.4.2/src > patch -Np0 < ~/CP-VASP/version1/vasp6.4_6.3_cpm.patch
+```
+
+### 4.2. 重新編譯
+
+加入新檔案後，需要重新編譯 VASP，讓 CP-VASP 的功能被包含進來。
+
+```bash
+# 重新編譯標準版
+tux@suse16:~/vasp.6.4.2 > make std
+```
+
+---
+
+## 5. 整合 VTST 模組
 
 VTST (Vibrational Transition State Theory) Tools 是一套用於尋找過渡態、計算反應能壘的工具，其中最著名的是 NEB (Nudged Elastic Band) 方法。
 
-### 4.1. 下載與整合
+### 5.1. 下載與整合
 
 首先，下載 VTST 原始碼並將其複製到 VASP 的 `src` 目錄下。
 
@@ -149,7 +173,7 @@ tux@suse16:~ > tar zxf vtstcode-213.tgz
 tux@suse16:~ > cp -r ~/vtstcode-213/vtstcode6.4.0/* ~/vasp.6.4.2/src/.
 ```
 
-### 4.2. 修改原始碼與 Makefile
+### 5.2. 修改原始碼與 Makefile
 
 為了讓 VASP 能夠識別並編譯 VTST 的程式碼，需要手動修改幾個檔案。
 
@@ -207,7 +231,7 @@ tux@suse16:~ > cp -r ~/vtstcode-213/vtstcode6.4.0/* ~/vasp.6.4.2/src/.
 + dependencies: sources libs
 ```
 
-### 4.3. 重新編譯
+### 5.3. 重新編譯
 
 完成所有修改後，再次重新編譯 VASP。
 
